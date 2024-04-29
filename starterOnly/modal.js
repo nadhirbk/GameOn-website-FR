@@ -13,11 +13,19 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalBtn.forEach((btn) => {
+  btn.addEventListener("click", launchModal);
+});
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
+// #1 - fermeture bouton modal
 
+function closeModal() {
+  modalbg.style.display = "none";
+}
+const modalCloseBtn = modalbg.querySelector(".close");
+modalCloseBtn.addEventListener("click", closeModal);
