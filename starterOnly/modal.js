@@ -30,4 +30,6 @@ function closeModal() {
 const modalCloseBtn = modalbg.querySelector(".close");
 modalCloseBtn.addEventListener("click", closeModal);
 
-// #2 - Implémenter entrées du formulaire
+// #2 - Implémenter entrées du formulaire - Cf HTML - fait
+
+// #3 - Implémenter -
