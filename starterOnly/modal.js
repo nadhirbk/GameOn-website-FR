@@ -1,35 +1,40 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
+const loadModals = () => {
+  // J'aimerais rendre le header visible en responsive lorsqu'on ouvre le formulaire.
+  // Ensuite, lorsqu'on descend dans le formulaire, le header disparait. Si on remonte, le header réapparait.
+
+  // DOM elements
+  const modalbg = document.querySelector(".bground");
+  const modalContent = modalbg.querySelector(".content");
+  const modalBtns = document.querySelectorAll(".modal-btn");
+  const closeBtns = document.querySelectorAll(".close-btn");
+
+  // launch modal form
+  function launchModal() {
+    modalbg.style.display = "block";
   }
-}
 
-// DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+  // close modal form (fonction)
+  function closeModal() {
+    modalbg.style.display = "none";
+  }
 
-// launch modal event
-modalBtn.forEach((btn) => {
-  btn.addEventListener("click", launchModal);
-});
+  // Fermer la modale
+  closeBtns.forEach((btn) => btn.addEventListener("click", closeModal()));
 
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
-}
+  // launch modal event
+  modalBtns.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// #1 - fermeture bouton modal
+  document.addEventListener("keydown", (e) => {
+    e.key === "Escape" && closeModal();
+  });
 
-function closeModal() {
-  modalbg.style.display = "none";
-}
-const modalCloseBtn = modalbg.querySelector(".close");
-modalCloseBtn.addEventListener("click", closeModal);
+  modalbg.addEventListener("click", (e) => {
+    closeModal();
+  });
 
-// #2 - Implémenter entrées du formulaire - Cf HTML - fait
+  modalContent.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+};
 
-// #3 - Implémenter -
+export default loadModals;
